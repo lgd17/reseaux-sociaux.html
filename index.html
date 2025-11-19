@@ -7,48 +7,35 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ========== RESET & BASE ========== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
-  /* 🎯 FOND IMAGE + GRADIENT SUR LES CÔTÉS */
-  background:
-    /* Gradient sur les côtés */
-    linear-gradient(90deg,
-      rgba(10,10,10,0.9) 0%,
-      rgba(10,10,10,0) 20%,
-      rgba(10,10,10,0) 80%,
-      rgba(10,10,10,0.9) 100%),
-    /* Image centrée */
-    url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
+      /* 🎯 FOND IMAGE + GRADIENT SUR LES CÔTÉS */
+      background:
+        linear-gradient(90deg,
+          rgba(10,10,10,0.9) 0%,
+          rgba(10,10,10,0) 20%,
+          rgba(10,10,10,0) 80%,
+          rgba(10,10,10,0.9) 100%),
+        url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
 
-  /* Taille exacte de l'image */
-  background-size: 275px 575px;
+      background-size: 340px 700px;
 
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: #ffffff;
-}
-
-    /* ========== ANIMATIONS ========== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #ffffff;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-    /* ========== CONTAINER (CARD) ========== */
     .main-container {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255,255,255,0.12);
       backdrop-filter: blur(18px);
       border-radius: 25px;
       padding: 45px 35px;
@@ -56,7 +43,8 @@ body {
       width: 100%;
       text-align: center;
       animation: fadeInUp 0.8s ease-out;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
     }
 
     .main-container::before {
@@ -68,15 +56,24 @@ body {
       z-index: -1;
     }
 
-    /* ========== TITRES ========== */
-    .title {
-      margin-bottom: 10px;
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #ffffff, #f0f0f0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: float 3s ease-in-out infinite;
+    /* Cercle avec logo */
+    .logo-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 15px auto;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .logo-circle img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
     }
 
     .subtitle {
@@ -85,10 +82,10 @@ body {
       opacity: 0.9;
     }
 
-    /* ========== SOCIAL GRID (PRO) ========== */
+    /* Social grid */
     .social-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 colonnes PRO */
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
       justify-items: center;
       margin-bottom: 20px;
@@ -98,33 +95,26 @@ body {
       width: 85px;
       height: 85px;
       border-radius: 22px;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.08);
       backdrop-filter: blur(6px);
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba(255,255,255,0.25);
       box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-
       text-decoration: none;
       transition: 0.25s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .social-icon {
-      font-size: 36px;
-      z-index: 2;
-    }
+    .social-icon { font-size: 36px; z-index: 2; }
 
     .social-link:hover {
       transform: translateY(-5px) scale(1.08);
       box-shadow: 0 10px 25px rgba(255,255,255,0.25);
     }
 
-    /* Effet sweeping */
     .social-link::before {
       content: "";
       position: absolute;
@@ -137,28 +127,11 @@ body {
     }
     .social-link:hover::before { left: 120%; }
 
-    /* COULEURS HOVER */
-    .social-link[data-platform="telegram"]:hover {
-      background: #0088cc;
-      border-color: #0088cc;
-    }
+    .social-link[data-platform="telegram"]:hover { background: #0088cc; border-color: #0088cc; }
+    .social-link[data-platform="whatsapp"]:hover { background: #25D366; border-color: #25D366; }
+    .social-link[data-platform="instagram"]:hover { background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); border-color: #E1306C; }
+    .social-link[data-platform="youtube"]:hover { background: #FF0000; border-color: #FF0000; }
 
-    .social-link[data-platform="whatsapp"]:hover {
-      background: #25D366;
-      border-color: #25D366;
-    }
-
-    .social-link[data-platform="instagram"]:hover {
-      background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888);
-      border-color: #E1306C;
-    }
-
-    .social-link[data-platform="youtube"]:hover {
-      background: #FF0000;
-      border-color: #FF0000;
-    }
-
-    /* FOOTER */
     .footer-text {
       font-size: 0.85rem;
       opacity: 0.75;
@@ -171,35 +144,27 @@ body {
 <body>
 
   <div class="main-container">
-    <h1 class="title">🌟 Notre Communauté</h1>
+
+    <!-- Cercle logo -->
+    <div class="logo-circle">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Football_icon.svg" alt="Logo Football">
+    </div>
+
     <p class="subtitle">Connectez-vous avec nous sur vos plateformes préférées</p>
     
     <div class="social-grid">
-
-      <!-- Telegram -->
-      <a href="https://t.me/Roux_Canal_linktree_intermidiare"
-         class="social-link" data-platform="telegram">
+      <a href="https://t.me/Roux_Canal_linktree_intermidiare" class="social-link" data-platform="telegram">
         <i class="fab fa-telegram social-icon" style="color:#0088cc;"></i>
       </a>
-
-      <!-- WhatsApp -->
-      <a href="https://chat.whatsapp.com/GDBHPrDcZ3D7v4HqNyHBD6?mode=ems_wa_c"
-         class="social-link" data-platform="whatsapp">
+      <a href="https://chat.whatsapp.com/GDBHPrDcZ3D7v4HqNyHBD6?mode=ems_wa_c" class="social-link" data-platform="whatsapp">
         <i class="fab fa-whatsapp social-icon" style="color:#25D366;"></i>
       </a>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr"
-         class="social-link" data-platform="instagram">
+      <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr" class="social-link" data-platform="instagram">
         <i class="fab fa-instagram social-icon" style="color:#E1306C;"></i>
       </a>
-
-      <!-- YouTube -->
-      <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7"
-         class="social-link" data-platform="youtube">
+      <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7" class="social-link" data-platform="youtube">
         <i class="fab fa-youtube social-icon" style="color:#FF0000;"></i>
       </a>
-
     </div>
 
     <p class="footer-text">✨ Rejoignez des milliers de membres actifs</p>
