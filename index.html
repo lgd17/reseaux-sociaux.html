@@ -10,15 +10,20 @@
     /* ========== RESET & BASE ========== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
+   body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
-  /* Fond avec image fixe taille exacte */
+  /* 🎯 Fond image 340x700px avec gradient seulement sur les côtés */
   background:
-    linear-gradient(90deg, #0a0a0a 0%, #0a0a0a 20%, transparent 50%, #0a0a0a 80%, #0a0a0a 100%),
+    linear-gradient(
+      90deg, 
+      rgba(10,10,10,0.8) 0%,   /* côté gauche */
+      rgba(10,10,10,0) 20%,    /* transition vers transparent */
+      rgba(10,10,10,0) 80%,    /* transparent au centre */
+      rgba(10,10,10,0.8) 100%  /* côté droit */
+    ),
     url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
-  
-  /* Taille exacte */
+
   background-size: 340px 700px;
 
   min-height: 100vh;
@@ -28,6 +33,7 @@
   padding: 20px;
   color: #ffffff;
 }
+
 
 
     /* ========== ANIMATIONS ========== */
