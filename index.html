@@ -11,23 +11,24 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
-      /* 🎯 FOND 100% RESPONSIVE PRO */
-      background:
-        linear-gradient(90deg, #0a0a0a 0%, #0a0a0a 20%, transparent 50%, #0a0a0a 80%, #0a0a0a 100%),
-        url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg')
-        center center no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
+  /* Fond avec image fixe taille exacte */
+  background:
+    linear-gradient(90deg, #0a0a0a 0%, #0a0a0a 20%, transparent 50%, #0a0a0a 80%, #0a0a0a 100%),
+    url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
+  
+  /* Taille exacte */
+  background-size: 340px 700px;
 
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      color: #ffffff;
-    }
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #ffffff;
+}
+
 
     /* ========== ANIMATIONS ========== */
     @keyframes fadeInUp {
