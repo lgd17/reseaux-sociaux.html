@@ -140,9 +140,73 @@
       color: #000000;
     }
 
+
+/* BOUTON ⋯ */
+.copy-btn {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  padding: 6px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  transition: 0.25s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+/* POPUP "COPIÉ" */
+.copy-popup {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 22px;
+  border-radius: 14px;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.copy-popup.show {
+  opacity: 1;
+}
+
+    
   </style>
 </head>
 
+<script>
+document.querySelectorAll(".copy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const link = btn.dataset.copy;
+    navigator.clipboard.writeText(link);
+
+    let popup = document.createElement("div");
+    popup.className = "copy-popup";
+    popup.textContent = "Lien copié !";
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => popup.classList.add("show"), 20);
+    setTimeout(() => {
+      popup.classList.remove("show");
+      setTimeout(() => popup.remove(), 200);
+    }, 1500);
+  });
+});
+</script>
+
+  
 <body>
 
   <div class="main-container">
@@ -164,25 +228,31 @@
     <i class="fab fa-telegram"></i>
    Canal Telegram
   </a>
-
+<span class="copy-btn" data-copy="https://t.me/Roux_Canal_linktree_intermidiare">⋯</span>
+</div>
+      
   <a href="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s" 
      class="linktree-btn" data-platform="whatsapp">
     <i class="fab fa-whatsapp"></i>
     Canal WhatsApp
   </a>
+<span class="copy-btn" data-copy="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s">⋯</span>
+</div>
 
   <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr" 
      class="linktree-btn" data-platform="instagram">
     <i class="fab fa-instagram"></i>
      Instagram
   </a>
-
+<span class="copy-btn" data-copy="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr">⋯</span>
+</div>
+      
   <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7" 
      class="linktree-btn" data-platform="youtube">
     <i class="fab fa-youtube"></i>
     chaîne YouTube
   </a>
-
+<span class="copy-btn" data-copy="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7">⋯</span>
 </div>
   </div>
 
