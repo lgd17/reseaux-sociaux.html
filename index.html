@@ -3,203 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROUX freetips|Lintree</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Linktree Premium</title>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
 
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-
-      /* 🎯 FOND IMAGE + GRADIENT SUR LES CÔTÉS */
-      background:
-        linear-gradient(90deg,
-          rgba(10,10,10,0.9) 0%,
-          rgba(10,10,10,0) 20%,
-          rgba(10,10,10,0) 80%,
-          rgba(10,10,10,0.9) 100%),
-        url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
-  background-size: cover,340px 680px; /* 1ère image = taille fixe, overlay = cover */
-  background-repeat: no-repeat, no-repeat;
-  background-position: center center, center center;
-  background-attachment: scroll, scroll; /* pour Safari + mobile */
-
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #0a0f24; /* Bleu très foncé premium */
       padding: 20px;
-      color: #ffffff;
+      display: flex;
+      justify-content: center;
     }
 
-    @keyframes fadeInUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-    .main-container {
-      background: #ffffff;
-      backdrop-filter: blur(18px);
-      border-radius: 25px;
-      padding: 25px 30px;
+    /* ---------------- CONTENEUR PRINCIPAL ---------------- */
+    .container {
+      width: 100%;
       max-width: 420px;
-      width: 100%;
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out;
-      border: 1px solid rgba(255,255,255,0.2);
+      background: #ffffff;       /* Contraste blanc */
+      border-radius: 28px;
+      padding: 25px;
       position: relative;
+      box-shadow: 0 0 25px rgba(0,0,0,0.25);
     }
 
-    .main-container::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: 26px;
-      background: linear-gradient(45deg, rgba(255,255,255,0.25), transparent, rgba(255,255,255,0.25));
-      z-index: -1;
+    /* ----------- TITRE & DESCRIPTION ----------- */
+    h1 {
+      color: #002bff;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
-    /* Cercle avec logo */
-    .logo-circle {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+    p {
+      color: #000000; /* 🔥 noir comme tu veux */
+      font-size: 15px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    /* ----------------- GRILLE RÉSEAUX ----------------- */
+    .links {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 15px auto;
-      border: 2px solid rgba(255,255,255,0.3);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 70px; /* espace pour carré du bas */
     }
 
-    .logo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .subtitle {
-      margin-bottom: 35px;
-      font-size: 1.25rem;
-       font-weight: 600;
-      opacity: 1;
-      color: #000000;
-    }
-
-/* Carré image sous le container */
-.bottom-box {
-  width: 120px;
-  height: 120px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(0,0,0,0.1);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  position: absolute;
-  left: 50%;
-  bottom: -70px;               /* dépasse légèrement */
-  transform: translateX(-50%);
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-/* Image dans le carré */
-.bottom-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-    
-    /* Social grid */
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      justify-items: center;
-      margin-bottom: 20px;
-    }
-
-    .social-link {
-      width: 85px;
-      height: 85px;
-      border-radius: 22px;
+    .link-item {
+      background: #e9eefc;
+      color: #001d89;
+      padding: 15px 18px;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 600;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(6px);
-      border: 1.5px solid rgba(255,255,255,0.25);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
       text-decoration: none;
-      transition: 0.25s ease;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: 0.2s;
     }
 
-    .social-icon { font-size: 36px; z-index: 2; }
-
-    .social-link:hover {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 0 10px 25px rgba(255,255,255,0.25);
+    .link-item:hover {
+      transform: scale(1.03);
     }
 
-    .social-link::before {
-      content: "";
+    /* ---------------- CARRÉ OVERLAY IMAGE ---------------- */
+    .bottom-card {
       position: absolute;
-      top: 0;
-      left: -120%;
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .bottom-card img {
       width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.5s;
+      border-radius: 16px;
+      object-fit: cover;
     }
-    .social-link:hover::before { left: 120%; }
-
-    .social-link[data-platform="telegram"]:hover { background: #0088cc; border-color: #0088cc; }
-    .social-link[data-platform="whatsapp"]:hover { background: #25D366; border-color: #25D366; }
-    .social-link[data-platform="instagram"]:hover { background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); border-color: #E1306C; }
-    .social-link[data-platform="youtube"]:hover { background: #FF0000; border-color: #FF0000; }
-
-    .footer-text {
-      font-size: 0.85rem;
-      opacity: 0.75;
-      margin-top: 25px;
-      color: #000000;
-    }
-
   </style>
-</head>
 
+</head>
 <body>
 
-  <div class="main-container">
-    
-    <!-- Petit carré image en bas -->
-    <div class="bottom-box">
-      <img src="https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bouton.jpg" alt="Mini image">
+  <div class="container">
+
+    <h1>Mes Réseaux</h1>
+    <p>Retrouve-moi sur toutes mes plateformes officielles. Clique et rejoins la communauté 👇</p>
+
+    <div class="links">
+
+      <a href="#" class="link-item">
+        Telegram <span>➡</span>
+      </a>
+
+      <a href="#" class="link-item">
+        WhatsApp <span>➡</span>
+      </a>
+
+      <a href="#" class="link-item">
+        Instagram <span>➡</span>
+      </a>
+
+      <a href="#" class="link-item">
+        YouTube <span>➡</span>
+      </a>
+
     </div>
 
-    <!-- Cercle logo -->
-    <div class="logo-circle">
-      <img src="https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/logos.png" alt="Logo Football">
+    <!-- CARRÉ IMAGE EN BAS -->
+    <div class="bottom-card">
+      <img src="https://via.placeholder.com/400x220" alt="Promo / Image">
     </div>
-    
-    <p class="subtitle">𝙍𝙊𝙐𝙓||ᴸⁱⁿᵏᵗʳᵉᵉ</p>
-    <p class="footer-text">Bienvenue dans le meilleure club des gagnants </p>
-    <div class="social-grid">
-      <a href="https://t.me/Roux_Canal_linktree_intermidiare" class="social-link" data-platform="telegram">
-        <i class="fab fa-telegram social-icon" style="color:#0088cc;"></i>
-      </a>
-      <a href="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s" class="social-link" data-platform="whatsapp">
-        <i class="fab fa-whatsapp social-icon" style="color:#25D366;"></i>
-      </a>
-      <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr" class="social-link" data-platform="instagram">
-        <i class="fab fa-instagram social-icon" style="color:#E1306C;"></i>
-      </a>
-      <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7" class="social-link" data-platform="youtube">
-        <i class="fab fa-youtube social-icon" style="color:#FF0000;"></i>
-      </a>
-    </div>
+
   </div>
 
 </body>
