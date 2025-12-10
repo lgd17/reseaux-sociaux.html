@@ -1,91 +1,91 @@
 <!DOCTYPE html>
-<html lang="fr"> 
-  <head> <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROUX freetips | Linktree</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style> 
-      * { margin: 0; padding: 0; box-sizing: border-box; } 
-      body { 
-        font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-        
-  /* 🎯 FOND IMAGE + GRADIENT SUR LES CÔTÉS */
-    background:
-                linear-gradient(90deg,
-                rgba(10,10,10,0.9) 0%,
-                rgba(10,10,10,0) 20%,
-                rgba(10,10,10,0) 80%, 
-                rgba(10,10,10,0.9) 100%),
-         url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
-      background-size: cover,340px 680px;
-      background-repeat: no-repeat, no-repeat;
-      background-position: center center, center center;
-      background-attachment: scroll, scroll;
-      min-height: 100vh; display: flex;
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROUX freetips | Linktree</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background:
+        linear-gradient(90deg,
+          rgba(10,10,10,0.9) 0%,
+          rgba(10,10,10,0) 20%,
+          rgba(10,10,10,0) 80%,
+          rgba(10,10,10,0.9) 100%),
+        url('https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      color: #ffffff; 
-      }
-      
-      @keyframes fadeInUp {
+      color: #ffffff;
+    }
+
+    @keyframes fadeInUp { 
       from { opacity:0; transform: translateY(30px); } 
-      to { opacity:1; transform: translateY(0); }
-      } 
-      
-      .main-container { 
-        background: #ffffff;
-        backdrop-filter: blur(18px);
-        border-radius: 25px;
-        padding: 25px 5px;
-        max-width: 420px; width: 100%;
-        text-align: center; 
-        animation: fadeInUp 0.8s ease-out;
-        border: 1px solid rgba(255,255,255,0.2);
-        position: relative;
-      } 
-      
-      .main-container::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: 26px;
-        background: linear-gradient(45deg, rgba(255,255,255,0.25), transparent, rgba(255,255,255,0.25));
-        z-index: -1;
-      } 
-      
-      /* Cercle logo */ 
-      .logo-circle { 
-        width: 120px; 
-        height: 120px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.15);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto 15px auto;
-        border: 2px solid rgba(255,255,255,0.3);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      } 
-      
-      .logo-circle img { 
-        width: 100%;
-        height: 100%; 
-        object-fit: contain;
-      }
+      to { opacity:1; transform: translateY(0); } 
+    }
+
+    .main-container {
+      background: #ffffff;
+      backdrop-filter: blur(18px);
+      border-radius: 25px;
+      padding: 25px 20px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out;
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      color: #000;
+    }
+
+    .main-container::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(45deg, rgba(255,255,255,0.25), transparent, rgba(255,255,255,0.25));
+      z-index: -1;
+    }
+
+    .logo-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 15px auto;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .subtitle {
       margin-bottom: 20px;
-      font-size: 1.25rem; 
+      font-size: 1.25rem;
       font-weight: 600;
-      opacity: 1;
-      color: #000000; }
+    }
 
-   footer-text {
-     font-size: 0.90rem;
-     opacity: 0.80;
-     margin-top: 20px;
-     color: #000000; }
-      
+    .footer-text {
+      font-size: 0.90rem;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
     .linktree-links {
       display: flex;
       flex-direction: column;
@@ -94,40 +94,21 @@
     }
 
     .linktree-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-radius: 14px;
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-  backdrop-filter: blur(8px);
-  transition: 0.25s ease;
-  position: relative;
-}
-
-.copy-btn {
-  font-size: 18px;
-  font-weight: 700;
-  color: #000;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  flex-direction: column; /* vertical */
-  justify-content: center;
-  gap: 3px;
-}
-
-.copy-btn::before,
-.copy-btn::after {
-  content: "⋮";
-  display: block;
-  text-align: center;
-}
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      font-size: 1rem;
+      backdrop-filter: blur(8px);
+      transition: 0.25s ease;
+    }
 
     .linktree-btn i {
       font-size: 24px;
@@ -143,6 +124,50 @@
     .linktree-btn[data-platform="whatsapp"]:hover { background:#25D366; color:white; }
     .linktree-btn[data-platform="instagram"]:hover { background:linear-gradient(45deg,#f09433,#dc2743,#cc2366,#bc1888); color:white; }
     .linktree-btn[data-platform="youtube"]:hover { background:#FF0000; color:white; }
+
+    .copy-btn {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      background: rgba(0,0,0,0.05);
+      padding: 6px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid rgba(0,0,0,0.1);
+      transition: 0.25s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(0,0,0,0.2);
+      transform: scale(1.1);
+    }
+
+    .copy-popup {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      color: #000000;
+      padding: 10px 22px;
+      border-radius: 14px;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-out;
+    }
+
+    .copy-popup.show { opacity: 1; }
+
+    .link-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
   </style>
 </head>
 <body>
@@ -156,30 +181,33 @@
   <p class="footer-text">Bienvenue dans le meilleur club des gagnants</p>
 
   <div class="linktree-links">
-  <a href="https://t.me/Roux_Canal_linktree_intermidiare" 
-     class="linktree-btn" data-platform="telegram">
-    <span class="link-text"><i class="fab fa-telegram"></i> Canal Telegram</span>
-    <span class="copy-btn" data-copy="https://t.me/Roux_Canal_linktree_intermidiare">⋮</span>
-  </a>
+    <div class="link-wrapper">
+      <a href="https://t.me/Roux_Canal_linktree_intermidiare" class="linktree-btn" data-platform="telegram">
+        <i class="fab fa-telegram"></i> Canal Telegram
+      </a>
+      <span class="copy-btn" data-copy="https://t.me/Roux_Canal_linktree_intermidiare">⋯</span>
+    </div>
 
-  <a href="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s" 
-     class="linktree-btn" data-platform="whatsapp">
-    <span class="link-text"><i class="fab fa-whatsapp"></i> Canal WhatsApp</span>
-    <span class="copy-btn" data-copy="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s">⋮</span>
-  </a>
+    <div class="link-wrapper">
+      <a href="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s" class="linktree-btn" data-platform="whatsapp">
+        <i class="fab fa-whatsapp"></i> Canal WhatsApp
+      </a>
+      <span class="copy-btn" data-copy="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s">⋯</span>
+    </div>
 
-  <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr" 
-     class="linktree-btn" data-platform="instagram">
-    <span class="link-text"><i class="fab fa-instagram"></i> Instagram</span>
-    <span class="copy-btn" data-copy="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr">⋮</span>
-  </a>
+    <div class="link-wrapper">
+      <a href="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr" class="linktree-btn" data-platform="instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <span class="copy-btn" data-copy="https://www.instagram.com/rou_rouxine?igsh=cmdmdzhsNW0zOXYz&utm_source=qr">⋯</span>
+    </div>
 
-  <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7" 
-     class="linktree-btn" data-platform="youtube">
-    <span class="link-text"><i class="fab fa-youtube"></i> Chaîne YouTube</span>
-    <span class="copy-btn" data-copy="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7">⋮</span>
-  </a>
-</div>
+    <div class="link-wrapper">
+      <a href="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7" class="linktree-btn" data-platform="youtube">
+        <i class="fab fa-youtube"></i> Chaîne YouTube
+      </a>
+      <span class="copy-btn" data-copy="https://youtube.com/@lecommentateurdelavieordinaire?si=C9dyS8W-POo-BEE7">⋯</span>
+    </div>
   </div>
 </div>
 
