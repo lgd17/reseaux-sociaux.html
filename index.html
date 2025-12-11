@@ -134,24 +134,9 @@
 .linktree-btn[data-platform="instagram"]:hover { background:linear-gradient(45deg,#f09433,#dc2743,#cc2366,#bc1888); color:white; }
 .linktree-btn[data-platform="youtube"]:hover { background:#FF0000; color:white; }
 
-/* === BOUTON 3 POINTS ⋮ === */
-.copy-btn {
-  font-size: 22px;
-  font-weight: 900;
-  color: #000;
-  padding: 6px 10px;
-  cursor: pointer;
-  user-select: none;
-  border-radius: 10px;
-  transition: 0.25s;
-}
-
-.copy-btn:hover {
-  background: rgba(0,0,0,0.1);
-}
 
 /* SHARE BUTTON */
-/* === SHARE BUTTON EN HAUT À DROITE === */
+
 /* === BOUTON ⋮ EN HAUT À DROITE === */
 .menu-btn {
   position: fixed;
@@ -214,7 +199,22 @@
 }
 
 
-      
+  /* === BOUTON 3 POINTS ⋮ === */
+.copy-btn {
+  font-size: 22px;
+  font-weight: 900;
+  color: #000;
+  padding: 6px 10px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+.copy-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
+    
 /* === MENU LINKTREE === */
 .more-menu {
   position: absolute;
@@ -360,41 +360,42 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Fermer tous les menus
-  function closeAllMenus() {
-    document.querySelectorAll(".more-menu").forEach(menu => {
-      menu.classList.remove("show");
-    });
+// Fermeture des menus
+function closeAllMenus() {
+  document.querySelectorAll(".more-menu").forEach(menu => {
+    menu.classList.remove("show");
+  });
+}
 
-  // Gestion des boutons ⋮
+document.addEventListener("DOMContentLoaded", () => {
+
   document.querySelectorAll(".copy-btn").forEach(btn => {
     const menu = btn.querySelector(".more-menu");
     const link = btn.dataset.link;
 
-    // Ouvrir / fermer menu
     btn.addEventListener("click", (e) => {
-      e.stopPropagation(); 
+      e.stopPropagation();
       closeAllMenus();
       menu.classList.toggle("show");
     });
 
-    // Copier lien
     menu.querySelector(".copy-link").addEventListener("click", () => {
       navigator.clipboard.writeText(link);
+
       let popup = document.createElement("div");
       popup.className = "copy-popup";
       popup.textContent = "Lien copié !";
       document.body.appendChild(popup);
+
       setTimeout(() => popup.classList.add("show"), 20);
       setTimeout(() => {
         popup.classList.remove("show");
         setTimeout(() => popup.remove(), 200);
       }, 1500);
+
       closeAllMenus();
     });
 
-    // Ouvrir lien
     menu.querySelector(".open-link").addEventListener("click", () => {
       window.open(link, "_blank");
       closeAllMenus();
@@ -402,11 +403,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  // Cliquer ailleurs = fermer menus
-  document.addEventListener("click", () => {
-    closeAllMenus();
-   });
- });
+  document.addEventListener("click", () => closeAllMenus());
+});
 </script>
   
 <script>
