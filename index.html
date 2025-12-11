@@ -152,26 +152,67 @@
 
 /* SHARE BUTTON */
 /* === SHARE BUTTON EN HAUT À DROITE === */
-.share-btn {
+/* === BOUTON ⋮ EN HAUT À DROITE === */
+.menu-btn {
   position: fixed;
   top: 18px;
-  right: 18px;
+  right: 65px;
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.35);
   color: #fff;
-  font-size: 20px;
-  padding: 10px 12px;
-  border-radius: 14px;
+  font-size: 26px;
+  padding: 6px 10px;
+  border-radius: 12px;
   cursor: pointer;
-  z-index: 999;
+  z-index: 1000;
   transition: 0.25s ease;
+  font-weight: 900;
 }
 
-.share-btn:hover {
+.menu-btn:hover {
   background: rgba(255,255,255,0.4);
   transform: scale(1.08);
 }
+
+/* === MENU FLOTTANT STYLE LINKTREE === */
+.top-menu {
+  position: fixed;
+  top: 65px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  width: 180px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  padding: 8px 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 0.25s ease;
+  z-index: 999;
+}
+
+.top-menu.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.top-menu button {
+  width: 100%;
+  padding: 12px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  color: #000;
+}
+
+.top-menu button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
 
       
 /* === MENU LINKTREE === */
@@ -233,10 +274,16 @@
 </head>
 <body>
 
-<!-- SHARE BUTTON -->
-<button class="share-btn" onclick="shareSite()">
-  <i class="fa-solid fa-share-nodes"></i>
+<button class="menu-btn" onclick="toggleMainMenu()">
+  ⋮
 </button>
+
+<div class="top-menu" id="topMenu">
+  <button onclick="copyMainLink()">Copier le lien</button>
+  <button onclick="shareSite()">Partager</button>
+  <button onclick="alert('ROUX Linktree – Tous droits réservés')">À propos</button>
+</div>
+
 
   
 <div class="main-container">
@@ -311,37 +358,90 @@
   </div>
 </div>
 
+
 <script>
-function shareSite() {
-  const shareData = {
-    title: "ROUX freetips | Linktree",
-    text: "Découvre tous mes réseaux ici 👇",
-    url: window.location.href
-  };
+document.addEventListener("DOMContentLoaded", () => {
+  // Fermer tous les menus
+  function closeAllMenus() {
+    document.querySelectorAll(".more-menu").forEach(menu => {
+      menu.classList.remove("show");
+    });
 
-  // Si le navigateur supporte Web Share API
-  if (navigator.share) {
-    navigator.share(shareData)
-      .catch(err => console.log("Share cancelled"));
-  } 
-  else {
-    // Fallback Copier lien
-    navigator.clipboard.writeText(window.location.href);
+  // Gestion des boutons ⋮
+  document.querySelectorAll(".copy-btn").forEach(btn => {
+    const menu = btn.querySelector(".more-menu");
+    const link = btn.dataset.link;
 
-    let popup = document.createElement("div");
-    popup.className = "copy-popup";
-    popup.textContent = "Lien copié !";
-    document.body.appendChild(popup);
+    // Ouvrir / fermer menu
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); 
+      closeAllMenus();
+      menu.classList.toggle("show");
+    });
 
-    setTimeout(() => popup.classList.add("show"), 20);
-    setTimeout(() => {
-      popup.classList.remove("show");
-      setTimeout(() => popup.remove(), 200);
-    }, 1500);
-  }
+    // Copier lien
+    menu.querySelector(".copy-link").addEventListener("click", () => {
+      navigator.clipboard.writeText(link);
+      let popup = document.createElement("div");
+      popup.className = "copy-popup";
+      popup.textContent = "Lien copié !";
+      document.body.appendChild(popup);
+      setTimeout(() => popup.classList.add("show"), 20);
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.remove(), 200);
+      }, 1500);
+      closeAllMenus();
+    });
+
+    // Ouvrir lien
+    menu.querySelector(".open-link").addEventListener("click", () => {
+      window.open(link, "_blank");
+      closeAllMenus();
+    });
+
+  });
+
+  // Cliquer ailleurs = fermer menus
+  document.addEventListener("click", () => {
+    closeAllMenus();
+   });
+ });
+</script>
+  
+<script>
+function toggleMainMenu() {
+  document.getElementById("topMenu").classList.toggle("show");
 }
+
+// Copier lien principal
+function copyMainLink() {
+  navigator.clipboard.writeText(window.location.href);
+
+  let popup = document.createElement("div");
+  popup.className = "copy-popup";
+  popup.textContent = "Lien copié !";
+  document.body.appendChild(popup);
+
+  setTimeout(() => popup.classList.add("show"), 20);
+  setTimeout(() => {
+    popup.classList.remove("show");
+    setTimeout(() => popup.remove(), 200);
+  }, 1500);
+
+  toggleMainMenu();
+}
+
+// Fermeture du menu si on clique ailleurs
+document.addEventListener("click", (e) => {
+  const menu = document.getElementById("topMenu");
+  const btn = document.querySelector(".menu-btn");
+
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove("show");
+  }
+});
 </script>
 
-  
 </body>
 </html>
