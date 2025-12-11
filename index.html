@@ -150,6 +150,30 @@
   background: rgba(0,0,0,0.1);
 }
 
+/* SHARE BUTTON */
+/* === SHARE BUTTON EN HAUT À DROITE === */
+.share-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  z-index: 999;
+  transition: 0.25s ease;
+}
+
+.share-btn:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.08);
+}
+
+      
 /* === MENU LINKTREE === */
 .more-menu {
   position: absolute;
@@ -209,6 +233,12 @@
 </head>
 <body>
 
+<!-- SHARE BUTTON -->
+<button class="share-btn" onclick="shareSite()">
+  <i class="fa-solid fa-share-nodes"></i>
+</button>
+
+  
 <div class="main-container">
   <div class="logo-circle">
     <img src="https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/logos.png" alt="Logo Football">
@@ -227,8 +257,8 @@
       <div class="copy-btn" data-link="https://t.me/Roux_Canal_linktree_intermidiare">
         ⋮
         <div class="more-menu">
-          <button class="copy-link">📋 Copier le lien</button>
-          <button class="open-link">🔗 Ouvrir</button>
+          <button class="copy-link">Copier le lien</button>
+          <button class="open-link">Ouvrir</button>
         </div>
       </div>
     </div>
@@ -242,8 +272,8 @@
       <div class="copy-btn" data-link="https://whatsapp.com/channel/0029VbBhA7V8kyyLnd7czV2s">
         ⋮
         <div class="more-menu">
-          <button class="copy-link">📋 Copier le lien</button>
-          <button class="open-link">🔗 Ouvrir</button>
+          <button class="copy-link">Copier le lien</button>
+          <button class="open-link">Ouvrir</button>
         </div>
       </div>
     </div>
@@ -257,8 +287,8 @@
       <div class="copy-btn" data-link="https://www.instagram.com/rou_rouxine">
         ⋮
         <div class="more-menu">
-          <button class="copy-link">📋 Copier le lien</button>
-          <button class="open-link">🔗 Ouvrir</button>
+          <button class="copy-link">Copier le lien</button>
+          <button class="open-link">Ouvrir</button>
         </div>
       </div>
     </div>
@@ -272,8 +302,8 @@
       <div class="copy-btn" data-link="https://youtube.com/@lecommentateurdelavieordinaire">
         ⋮
         <div class="more-menu">
-          <button class="copy-link">📋 Copier le lien</button>
-          <button class="open-link">🔗 Ouvrir</button>
+          <button class="copy-link">Copier le lien</button>
+          <button class="open-link">Ouvrir</button>
         </div>
       </div>
     </div>
@@ -282,59 +312,36 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+function shareSite() {
+  const shareData = {
+    title: "ROUX freetips | Linktree",
+    text: "Découvre tous mes réseaux ici 👇",
+    url: window.location.href
+  };
 
-  // Fermer tous les menus
-  function closeAllMenus() {
-    document.querySelectorAll(".more-menu").forEach(menu => {
-      menu.classList.remove("show");
-    });
+  // Si le navigateur supporte Web Share API
+  if (navigator.share) {
+    navigator.share(shareData)
+      .catch(err => console.log("Share cancelled"));
+  } 
+  else {
+    // Fallback Copier lien
+    navigator.clipboard.writeText(window.location.href);
+
+    let popup = document.createElement("div");
+    popup.className = "copy-popup";
+    popup.textContent = "Lien copié !";
+    document.body.appendChild(popup);
+
+    setTimeout(() => popup.classList.add("show"), 20);
+    setTimeout(() => {
+      popup.classList.remove("show");
+      setTimeout(() => popup.remove(), 200);
+    }, 1500);
   }
-
-  // Gestion des boutons ⋮
-  document.querySelectorAll(".copy-btn").forEach(btn => {
-    const menu = btn.querySelector(".more-menu");
-    const link = btn.dataset.link;
-
-    // Ouvrir / fermer menu
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation(); 
-      closeAllMenus();
-      menu.classList.toggle("show");
-    });
-
-    // Copier lien
-    menu.querySelector(".copy-link").addEventListener("click", () => {
-      navigator.clipboard.writeText(link);
-
-      let popup = document.createElement("div");
-      popup.className = "copy-popup";
-      popup.textContent = "Lien copié !";
-      document.body.appendChild(popup);
-
-      setTimeout(() => popup.classList.add("show"), 20);
-      setTimeout(() => {
-        popup.classList.remove("show");
-        setTimeout(() => popup.remove(), 200);
-      }, 1500);
-
-      closeAllMenus();
-    });
-
-    // Ouvrir lien
-    menu.querySelector(".open-link").addEventListener("click", () => {
-      window.open(link, "_blank");
-      closeAllMenus();
-    });
-  });
-
-  // Cliquer ailleurs = fermer menus
-  document.addEventListener("click", () => {
-    closeAllMenus();
-  });
-
-});
+}
 </script>
+
   
 </body>
 </html>
