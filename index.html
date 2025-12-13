@@ -135,30 +135,35 @@
 .linktree-btn[data-platform="youtube"]:hover { background:#FF0000; color:white; }
 
 
-/* SHARE BUTTON */
-
-/* === BOUTON ⋮ EN HAUT À DROITE === */
-.menu-btn {
-  position: fixed;
-  top: 18px;
-  right: 65px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.35);
-  color: #fff;
-  font-size: 26px;
-  padding: 6px 10px;
-  border-radius: 12px;
+.share-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.08);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 1000;
   transition: 0.25s ease;
-  font-weight: 900;
+  z-index: 10;
 }
 
-.menu-btn:hover {
-  background: rgba(255,255,255,0.4);
-  transform: scale(1.08);
+.share-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: #000;
 }
+
+.share-btn:hover {
+  background: rgba(0,0,0,0.18);
+  transform: scale(1.1);
+}
+
 
 /* === MENU FLOTTANT STYLE LINKTREE === */
 .top-menu {
