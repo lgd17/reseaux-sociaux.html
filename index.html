@@ -218,7 +218,30 @@
 .copy-btn:hover {
   background: rgba(0,0,0,0.1);
 }
-    
+
+
+  /* === jouter
+
+
+.profile-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Le bouton se cale à droite du logo */
+.profile-header .share-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+      
 /* === MENU LINKTREE === */
 .more-menu {
   position: absolute;
@@ -278,15 +301,16 @@
 </head>
 <body>
 
-<button id="shareBtn" class="share-btn" aria-label="Partager">
-  <i class="fas fa-share-alt"></i>
-</button>
-
-
-<div class="main-container">
+<div class="profile-header">
   <div class="logo-circle">
     <img src="https://raw.githubusercontent.com/lgd17/reseaux-sociaux.html/main/images/logos.png" alt="Logo Football">
   </div>
+
+  <button id="shareBtn" class="share-btn" aria-label="Partager">
+    <i class="fas fa-share-alt"></i>
+  </button>
+</div>
+
 
   <p class="subtitle">𝙍𝙊𝙐𝙓 || ᴸⁱⁿᵏᵗʳᵉᵉ</p>
   <p class="footer-text">Bienvenue dans le meilleur club des gagnants</p>
